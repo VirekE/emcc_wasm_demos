@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script>
+        Module = {};
+        Module.onRuntimeInitialized = function () {
+            var count = 50;
+            var ptr = Module._malloc(4 * count);
+            for (var i = 0; i < count; i++) {
+                Module.HEAP32[ptr / 4 + i] = i + 1;
+            }
+            console.log(Module.diy_sum(ptr, count));
+            Module._free(ptr);
+        }
+    </script>
+    <script src="diysum.js"></script>
+</head>
+
+<body>
+
+</body>
+
+</html>
